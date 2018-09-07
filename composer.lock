@@ -4,9 +4,94 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "9e7799ffc986d1998330eb7a41fb9875",
+  "content-hash": "84725df1fa5aa9618f2348f0acfe131d",
   "packages": [],
-  "packages-dev": [],
+  "packages-dev": [
+    {
+      "name": "psr/log",
+      "version": "1.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/php-fig/log.git",
+        "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+        "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.3.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Log\\": "Psr/Log/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "PHP-FIG",
+          "homepage": "http://www.php-fig.org/"
+        }
+      ],
+      "description": "Common interface for logging libraries",
+      "homepage": "https://github.com/php-fig/log",
+      "keywords": [
+        "log",
+        "psr",
+        "psr-3"
+      ],
+      "time": "2016-10-10T12:19:37+00:00"
+    },
+    {
+      "name": "sinri/ark-core",
+      "version": "1.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/sinri/Ark-Core.git",
+        "reference": "f47f233063a96d4d42ba8617e4d04615e0819623"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/sinri/Ark-Core/zipball/f47f233063a96d4d42ba8617e4d04615e0819623",
+        "reference": "f47f233063a96d4d42ba8617e4d04615e0819623",
+        "shasum": ""
+      },
+      "require": {
+        "ext-json": "*",
+        "psr/log": "~1.0"
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "sinri\\ark\\core\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Sinri Edogawa",
+          "email": "e.joshua.s.e@gmail.com"
+        }
+      ],
+      "description": "The core components of Ark 2",
+      "time": "2018-09-06T17:03:51+00:00"
+    }
+  ],
   "aliases": [],
   "minimum-stability": "stable",
   "stability-flags": [],
