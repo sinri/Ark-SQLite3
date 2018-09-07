@@ -1,5 +1,5 @@
 {
-  "name": "sinri/ark-sq-lite3",
+  "name": "sinri/ark-sqlite3",
   "description": "The SQLite3 Component for Ark 2",
   "type": "library",
   "license": "MIT",
