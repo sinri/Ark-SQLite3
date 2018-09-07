@@ -1,0 +1,21 @@
+{
+  "name": "sinri/ark-sq-lite3",
+  "description": "The SQLite3 Component for Ark 2",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sinri Edogawa",
+      "email": "e.joshua.s.e@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "ext-sqlite3": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "sinri\\ark\\database\\sqlite\\": "src/"
+    }
+  }
+}
