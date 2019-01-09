@@ -14,7 +14,7 @@
     "ext-sqlite3": "*"
   },
   "require-dev": {
-    "sinri/ark-core": "~1.0"
+    "sinri/ark-core": "~2.0"
   },
   "autoload": {
     "psr-4": {
