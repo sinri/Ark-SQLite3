@@ -20,5 +20,10 @@
     "psr-4": {
       "sinri\\ark\\database\\sqlite\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "sinri\\ark\\database\\sqlite\\test\\": "test/"
+    }
   }
 }
