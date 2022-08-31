@@ -360,17 +360,19 @@ class ArkSqlite3
     /**
      * @param string $template
      * @param array $bindValueMap
+     * @param int $mode
      * @return array
      * @throws ArkSqlite3BindException
      * @throws ArkSqlite3PrepareException
      * @throws ArkSqlite3QueryException
+     * @since 2.1 add parameter `mode`.
      */
-    public function safeQuery(string $template, array $bindValueMap = []): array
+    public function safeQuery(string $template, array $bindValueMap = [],$mode=SQLITE3_BOTH): array
     {
-        return $this->safeExecuteImpl($template, $bindValueMap, function (SQLite3Result $result, SQLite3Stmt $statement) {
+        return $this->safeExecuteImpl($template, $bindValueMap, function (SQLite3Result $result, SQLite3Stmt $statement) use ($mode) {
             $rows = [];
             while (true) {
-                $row = $result->fetchArray();
+                $row = $result->fetchArray($mode);
                 if ($row === false) break;
                 $rows[] = $row;
             }
