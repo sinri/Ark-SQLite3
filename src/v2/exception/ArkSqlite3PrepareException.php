@@ -1,7 +1,6 @@
 <?php
 
 namespace sinri\ark\database\sqlite\v2\exception;
-use Throwable;
 
 /**
  * @since 2.0

@@ -2,8 +2,6 @@
 
 namespace sinri\ark\database\sqlite\v2\exception;
 
-use Throwable;
-
 /**
  * @since 2.0
  * @since 2.1 updated constructor
