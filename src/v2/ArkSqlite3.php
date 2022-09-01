@@ -166,7 +166,7 @@ class ArkSqlite3
     {
         $done = $this->getSqlite3Instance()->exec($query);
         if ($done === false) {
-            throw new ArkSqlite3QueryException("Failed to query: " . $query, $this->getLastErrorCode(), $this->getLastError());
+            throw new ArkSqlite3QueryException($this->getLastErrorMsg(), $this->getLastErrorCode(), $this->getLastError(),$query);
         }
     }
 
@@ -192,7 +192,7 @@ class ArkSqlite3
 
     public function getLastError(): ArkSqlite3Exception
     {
-        return new ArkSqlite3Exception($this->getLastErrorMsg(), $this->getLastErrorCode());
+        return new ArkSqlite3Exception($this->getLastErrorMsg(), $this->getLastErrorCode(),$this->getLastError());
     }
 
     public function getLastErrorCode(): int
@@ -225,7 +225,7 @@ class ArkSqlite3
     {
         $statement = $this->getSqlite3Instance()->prepare($template);
         if ($statement === false) {
-            throw new ArkSqlite3PrepareException("Failed to prepare " . $template, $this->getLastErrorCode(), $this->getLastError());
+            throw new ArkSqlite3PrepareException($this->getLastErrorMsg(), $this->getLastErrorCode(), $this->getLastError(),$template);
         }
         return $statement;
     }
@@ -239,7 +239,7 @@ class ArkSqlite3
     {
         $result = $this->getSqlite3Instance()->query($query);
         if ($result === false) {
-            throw new ArkSqlite3QueryException("Failed to query " . $query, $this->getLastErrorCode(), $this->getLastError());
+            throw new ArkSqlite3QueryException($this->getLastErrorMsg(), $this->getLastErrorCode(), $this->getLastError(),$query);
         }
         return $result;
     }
@@ -253,7 +253,7 @@ class ArkSqlite3
     {
         $result = $this->getSqlite3Instance()->querySingle($query, true);
         if ($result === false) {
-            throw new ArkSqlite3QueryException("Failed to query " . $query, $this->getLastErrorCode(), $this->getLastError());
+            throw new ArkSqlite3QueryException($this->getLastErrorMsg(), $this->getLastErrorCode(), $this->getLastError(),$query);
         } else {
             return $result;
         }
@@ -268,7 +268,7 @@ class ArkSqlite3
     {
         $result = $this->getSqlite3Instance()->querySingle($query, false);
         if ($result === false) {
-            throw new ArkSqlite3QueryException("Failed to query " . $query, $this->getLastErrorCode(), $this->getLastError());
+            throw new ArkSqlite3QueryException($this->getLastErrorMsg(), $this->getLastErrorCode(), $this->getLastError(),$query);
         } else {
             return $result;
         }
@@ -291,12 +291,12 @@ class ArkSqlite3
         foreach ($bindValueMap as $key => $value) {
             $done = $statement->bindValue($key, $value);
             if (!$done) {
-                throw new ArkSqlite3BindException("Failed to bind value for placeholder [$key]", $this->getLastErrorCode(), $this->getLastError());
+                throw new ArkSqlite3BindException("Failed to bind value for placeholder [$key]", $this->getLastErrorCode(), $this->getLastError(),$template,$key,$value);
             }
         }
         $result = $statement->execute();
         if ($result === false) {
-            throw new ArkSqlite3QueryException("Failed to query " . $template);
+            throw new ArkSqlite3QueryException($this->getLastErrorMsg(),$this->getLastErrorCode(),$this->getLastError() , $template);
         }
         if ($callback === null) {
             $x = null;
@@ -367,7 +367,7 @@ class ArkSqlite3
      * @throws ArkSqlite3QueryException
      * @since 2.1 add parameter `mode`.
      */
-    public function safeQuery(string $template, array $bindValueMap = [],$mode=SQLITE3_BOTH): array
+    public function safeQuery(string $template, array $bindValueMap = [],int $mode=SQLITE3_BOTH): array
     {
         return $this->safeExecuteImpl($template, $bindValueMap, function (SQLite3Result $result, SQLite3Stmt $statement) use ($mode) {
             $rows = [];
